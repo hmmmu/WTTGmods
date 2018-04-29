@@ -1,0 +1,17 @@
+private void keyWasDiscovered()
+{
+    if (!this.hitmanActivated)
+    {
+        this.keyDiscoverCount++;
+        this.myHitmanData.KeysDiscoveredCount++;
+        if (this.keyDiscoverCount >= this.data.KeysRequiredToTrigger)
+        {
+            this.hitmanActivated = true;
+            this.myHitmanData.IsActivated = true;
+            this.generateFireWindow();
+        }
+        DataManager.Save<HitManData>(this.myHitmanData);
+    }
+}
+
+ 
