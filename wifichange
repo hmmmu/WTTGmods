@@ -1,0 +1,16 @@
+private void triggerAttack()
+{
+    if ((EnemyManager.State == ENEMY_STATE.IDLE) && (EnvironmentManager.PowerState == POWER_STATE.ON))
+    {
+        this.processAttack();
+    }
+    else
+    {
+        this.triggerTimeWindow = this.currentActiveWifiNetwork.networkTrackRate;
+        this.triggerTimeStamp = Time.time;
+        this.triggerActive = true;
+        this.warningActive = true;
+    }
+}
+
+ 
