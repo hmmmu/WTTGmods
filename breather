@@ -1,0 +1,64 @@
+public void PlayerSpawnedToDeadDrop()
+{
+    DataManager.LockSave = true;
+    if (this.threatsActive) && (EnemyManager.State == ENEMY_STATE.IDLE))
+    {
+        int num = Random.Range(0, 100);
+        bool flag = false;
+        switch (this.keyDiscoveryCount)
+        {
+            case 0:
+                flag = num < 10;
+                break;
+
+            case 1:
+                flag = num < 20;
+                break;
+
+            case 2:
+                flag = num < 30;
+                break;
+
+            case 3:
+                flag = num < 40;
+                break;
+
+            case 4:
+                flag = num < 50;
+                break;
+
+            case 5:
+                flag = num < 60;
+                break;
+
+            case 6:
+                flag = num < 70;
+                break;
+
+            case 7:
+                flag = num < 90;
+                break;
+
+            case 8:
+                flag = num < 90;
+                break;
+
+            default:
+                flag = num < 0x37;
+                break;
+        }
+        if (flag)
+        {
+            EnemyManager.State = ENEMY_STATE.BREATHER;
+            int index = Random.Range(0, this.audioQueSFXs.Length);
+            this.audioQueHub.PlaySoundCustomDelay(this.audioQueSFXs[index], 2f);
+            this.breatherIsActive = true;
+            this.preLeaveTrigger.SetActive();
+            this.pickUpTrigger.SetActive();
+            braceController.Ins.PlayerEnteredEvent.Event += new Action(this.playerEnteredBraceMode);
+            braceController.Ins.PlayerLeftEvent.Event += new Action(this.playerLeftBraceMode);
+        }
+    }
+}
+
+ 
