@@ -10,7 +10,7 @@
             this.generateNormalSpawnWindow();
             this.myCultData.NormalSpawnActivated = true;
         }
-        if (!this.powerOffAttackModeActivated && (this.keyDiscoveryCount >= 0))
+        if (!this.powerOffAttackModeActivated && (this.keyDiscoveryCount >= 2))
         {
             EnvironmentManager.PowerBehaviour.PowerOffEvent.Event += new Action(this.powerWentOff);
             this.powerOffAttackModeActivated = true;
